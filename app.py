@@ -2,10 +2,9 @@ import streamlit as st
 import numpy as np
 import pickle
 
-# Load model
-
-with open("Randomforestmodel.pkl","rb") as file:
-    Randomforestmodel=pickle.load(file)
+# Load model (relative path)
+with open("Randomforestmodel.pkl", "rb") as file:
+    Randomforestmodel = pickle.load(file)
 
 st.title("🍇 Raisin Prediction App")
 
@@ -20,16 +19,8 @@ Extent = st.number_input("Extent")
 Perimeter = st.number_input("Perimeter")
 
 if st.button("Predict"):
-
-    features = np.array([[Area,
-                          MajorAxisLength,
-                          MinorAxisLength,
-                          Eccentricity,
-                          ConvexArea,
-                          Extent,
-                          Perimeter]])
-
-   
+    features = np.array([[Area, MajorAxisLength, MinorAxisLength,
+                          Eccentricity, ConvexArea, Extent, Perimeter]])
 
     prediction = Randomforestmodel.predict(features)
 
